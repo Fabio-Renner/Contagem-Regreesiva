@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alessandra está chegando! ✈️❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #fce4ec 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .title {
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plane-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .heart {
+            animation: pulse 1.5s ease infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-6">
+    <div class="max-w-4xl w-full text-center my-8">
+        <h1 class="title text-5xl md:text-6xl text-pink-600 mb-2">Alessandra está chegando!</h1>
+        <p class="text-xl text-gray-700 mb-8">Contagem regressiva para o nosso encontro em Vitória</p>
+        
+        <div class="grid grid-cols-4 gap-4 mb-12">
+            <div class="countdown-box p-6 rounded-xl" id="days">
+                <div class="text-5xl font-bold text-pink-600">00</div>
+                <div class="text-gray-500">Dias</div>
+            </div>
+            <div class="countdown-box p-6 rounded-xl" id="hours">
+                <div class="text-5xl font-bold text-pink-600">00</div>
+                <div class="text-gray-500">Horas</div>
+            </div>
+            <div class="countdown-box p-6 rounded-xl" id="minutes">
+                <div class="text-5xl font-bold text-pink-600">00</div>
+                <div class="text-gray-500">Minutos</div>
+            </div>
+            <div class="countdown-box p-6 rounded-xl" id="seconds">
+                <div class="text-5xl font-bold text-pink-600">00</div>
+                <div class="text-gray-500">Segundos</div>
+            </div>
+        </div>
+        
+        <div class="relative my-12">
+            <svg class="w-24 h-24 mx-auto text-pink-500 heart" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+            </svg>
+            
+            <svg class="w-32 h-32 mx-auto text-blue-500 plane-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-lg max-w-md mx-auto mb-12">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Informações do voo</h3>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-600">Origem:</span>
+                <span class="font-medium">São Paulo (GRU)</span>
+            </div>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-600">Destino:</span>
+                <span class="font-medium">Vitória (VIX)</span>
+            </div>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-600">Data:</span>
+                <span class="font-medium">12/07/2025</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-gray-600">Horário:</span>
+                <span class="font-medium">09:00</span>
+            </div>
+        </div>
+        
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1b75527-eb7c-482f-987e-bd6583ebfec2.png" alt="Aeroporto de Vitória com aviões no pátio ao pôr do sol, montanhas ao fundo e céu alaranjado" class="w-full max-w-2xl mx-auto rounded-xl shadow-lg mb-8" />
+        
+        <p class="text-gray-600">Estou contando os segundos para te ver, meu amor!</p>
+    </div>
+
+    <script>
+        // Data de chegada: 12/07/2025 09:00
+        const arrivalDate = new Date('July 12, 2025 09:00:00').getTime();
+        
+        // Atualiza o contador a cada segundo
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = arrivalDate - now;
+            
+            // Cálculos de tempo
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Exibe o resultado
+            document.getElementById('days').querySelector('div:first-child').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').querySelector('div:first-child').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').querySelector('div:first-child').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').querySelector('div:first-child').innerHTML = seconds.toString().padStart(2, '0');
+            
+            // Se a contagem terminar
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.querySelector('h1').innerHTML = "Alessandra chegou! ❤️";
+                document.querySelector('.countdown-container').innerHTML = '<div class="text-4xl text-pink-600">Ela está aqui!</div>';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+
